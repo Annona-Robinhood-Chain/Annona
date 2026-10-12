@@ -146,7 +146,7 @@ body.lock { overflow: hidden; }
 #loader .lbar i { position: absolute; inset: 0; background: var(--sun); transform-origin: left; transform: scaleX(0); }
 
 /* ----- Curtain transisi halaman ----- */
-#curtain { position: fixed; inset: 0; z-index: 150; background: var(--sun); transform: scaleY(0); transform-origin: bottom; pointer-events: none; display: grid; place-items: center; }
+#curtain { position: fixed; inset: 0; z-index: 150; background: var(--sun); transform: scaleY(0); will-change: transform; backface-visibility: hidden; transform-origin: bottom; pointer-events: none; display: grid; place-items: center; }
 #curtain span { font-family: var(--serif); font-size: clamp(40px, 8vw, 96px); color: #14110F; font-style: italic; opacity: 0.9; }
 
 /* ----- Progres gulir + kursor ----- */
