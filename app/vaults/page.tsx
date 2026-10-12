@@ -54,7 +54,7 @@ async function load(): Promise<Loaded> {
 // Graft Vault yang belum ada di data dan belum dikonfigurasi tampil sebagai "belum terhubung": tanpa link, tanpa angka.
 const plannedGraft = {
   symbol: "gNVDA",
-  text: "Graft Vault · cash-secured put on NVDA",
+  text: "Graft · Cash-secured put on NVDA",
 };
 
 // Vault yang dikonfigurasi live (env + wallet aktif) tetapi belum ada di Supabase (indexer belum jalan): tetap ditampilkan dan

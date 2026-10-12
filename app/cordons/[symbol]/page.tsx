@@ -73,7 +73,7 @@ export default async function CordonDetailPage({ params, searchParams }: Props) 
       <main>
         <PageHead
           crumb={<><Link href="/cordons">Cordons</Link><span>/</span><span aria-current="page">{symbol}</span></>}
-          label={ok ? data.cordon.name : "Cordon"}
+          label={ok ? `Cordon · Stock basket · ${data.cordon.name}` : "Cordon · Stock basket"}
           title={symbol}
           lead={ok ? `${data.cordon.name}. One token holds the whole basket, and its value follows the stocks inside.` : undefined}
           meta={ok ? (

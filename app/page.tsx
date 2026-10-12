@@ -33,9 +33,11 @@ import { web3Env } from '@/lib/web3/env';
 export const dynamic = 'force-dynamic';
 
 export const metadata: Metadata = {
-  title: `${BRAND} — Bind stocks. Reap on Fridays.`,
+  title: 'Annona | Weekly yield on Robinhood Chain',
   description:
-    'Disciplined baskets and weekly covered-call vaults for Stock Tokens.',
+    'Earn weekly yield on your tokenized stocks on Robinhood Chain. Stock baskets and weekly vaults, paid in USDG every Friday.',
+  openGraph: { siteName: 'Annona', type: 'website', title: 'Annona | Weekly yield on Robinhood Chain', description: 'Earn weekly yield on your tokenized stocks on Robinhood Chain. Stock baskets and weekly vaults, paid in USDG every Friday.' },
+  twitter: { title: 'Annona | Weekly yield on Robinhood Chain', description: 'Earn weekly yield on your tokenized stocks on Robinhood Chain. Stock baskets and weekly vaults, paid in USDG every Friday.' },
 };
 
 type Loaded =
@@ -73,9 +75,9 @@ const products: {
   },
   {
     glyph: 'sickle',
-    name: 'Spur Vault',
+    name: 'Spur',
     sym: 'sNVDA',
-    kind: 'Covered-call vault',
+    kind: 'Covered call',
     href: '/vaults?kind=spur',
     cta: 'Explore Spurs',
     text: 'Deposit a Stock Token. Pickers pay premium up front for the upside above a strike. You collect it each round.',
@@ -83,9 +85,9 @@ const products: {
   },
   {
     glyph: 'granary',
-    name: 'Graft Vault',
+    name: 'Graft',
     sym: 'gNVDA',
-    kind: 'Cash-secured put vault',
+    kind: 'Cash-secured put',
     href: '/vaults?kind=graft',
     cta: 'Explore Grafts',
     text: 'Deposit USDG. Get paid premium while you wait to buy lower. If the price ends below the strike, the vault pays out the shortfall.',
@@ -336,23 +338,26 @@ export default async function Landing() {
           <div className="wrap">
             <div>
               <Appear>
-                <Eyebrow>Stock Tokens · Weekly premium · Onchain</Eyebrow>
+                <Eyebrow>Robinhood Chain · Weekly yield · USDG</Eyebrow>
               </Appear>
               <SplitTitle level={1} id="hero-title">
                 Reap on <em>Fridays.</em>
               </SplitTitle>
               <Appear as="p" className="lead" delay={0.5}>
-                {BRAND} binds Stock Tokens into Cordons and runs weekly vaults
-                that sell the top of the field. Premium is paid up front and
-                shared out every round, in USDG.
+                Earn weekly yield on your tokenized stocks on Robinhood Chain.
+                Paid in USDG every Friday.
               </Appear>
               <Appear className="cta-row" delay={0.65}>
                 <ButtonLink href="/cordons" magnet arrow>
-                  Bind your first Cordon
+                  Start earning
                 </ButtonLink>
                 <ButtonLink href="#how" variant="ghost" magnet>
-                  How the granary works
+                  How it works
                 </ButtonLink>
+              </Appear>
+              <Appear as="p" className="note hero-risk" delay={0.72}>
+                Yield comes from selling options and is not guaranteed. Stock
+                Tokens carry risk of loss.
               </Appear>
               <Appear className="chips" delay={0.8}>
                 <Chip href={cordonHref('cMAG7')}>cMAG7</Chip>
@@ -526,7 +531,7 @@ export default async function Landing() {
           <section aria-labelledby="band-title">
             <div className="wrap">
               <div>
-                <Label>The Harvest</Label>
+                <Label>Harvest · Weekly payout</Label>
                 <SplitTitle id="band-title">
                   Every Friday, <em>the harvest comes in.</em>
                 </SplitTitle>

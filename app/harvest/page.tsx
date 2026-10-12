@@ -108,7 +108,7 @@ export default async function HarvestPage() {
       <Header overlay />
       <main>
         <PageHead
-          label="The Harvest"
+          label="Harvest · Weekly payout"
           title={<>One round, <em>one week.</em></>}
           lead="The garden harvests one round per week: one expiry, one settlement price, one Harvest Card."
           meta={(

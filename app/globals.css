@@ -491,6 +491,7 @@ body.menu-open #menu nav a { opacity: 1; transform: none; }
   .hero .d-h1 { font-size: clamp(76px, 14vw, 180px); line-height: 0.84; letter-spacing: -0.035em; margin: 26px 0 26px; font-weight: 500; }
   .hero .d-h1 em { font-weight: 400; }
   .hero .lead { margin-bottom: 34px; }
+  .hero .hero-risk { margin: 14px 0 0; max-width: 34em; line-height: 1.5; }
   .hero .chips { margin-top: 34px; }
   .hero-art { position: relative; max-width: 600px; width: 100%; margin: 0 auto; }
   .hero-art svg { width: 100%; height: auto; overflow: visible; }

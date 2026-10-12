@@ -109,7 +109,7 @@ export default async function VaultDetailPage({ params }: Props) {
       <main>
         <PageHead
           crumb={<><Link href="/vaults">Spurs &amp; Grafts</Link><span>/</span><span aria-current="page">{symbol}</span></>}
-          label={vault ? (spur ? "Spur Vault · covered call" : "Graft Vault · cash-secured put") : "Vault"}
+          label={vault ? (spur ? "Spur · Covered call" : "Graft · Cash-secured put") : "Vault"}
           title={symbol}
           lead={vault ? `${spur ? "Spur Vault. Covered call" : "Graft Vault. Cash-secured put"} on ${vault.underlying}. A Picker pays premium up front each round.` : undefined}
           meta={vault ? (

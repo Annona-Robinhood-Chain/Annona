@@ -15,7 +15,7 @@ export function CordonCard({ symbol, name, nav, change, assets, tvlUsd, composit
   return (
     <TiltCard href={`/cordons/${symbol}`} className="pcard" delay={index * 0.1}>
       <div className="top">
-        <div><div className="sym">{symbol}</div><div className="nm">{name}</div></div>
+        <div><div className="sym">{symbol}</div><div className="nm">Cordon · Stock basket</div><div className="nm">{name}</div></div>
         <div className="tags"><Tag sun>{assets} assets</Tag>{isDemo && <Tag>demo</Tag>}</div>
       </div>
       {composition && composition.length > 0
@@ -42,7 +42,7 @@ export function VaultCard({ symbol, kind, underlying, apy, strike, round, isDemo
   round?: { no: number; status: string; expiry: string } | null; isDemo?: boolean; index?: number;
 }) {
   const spur = kind === "spur";
-  const type = spur ? "Spur Vault · covered call" : "Graft Vault · cash-secured put";
+  const type = spur ? "Spur · Covered call" : "Graft · Cash-secured put";
   return (
     <TiltCard href={`/vaults/${symbol}`} className="pcard" delay={index * 0.1}>
       <div className="top">

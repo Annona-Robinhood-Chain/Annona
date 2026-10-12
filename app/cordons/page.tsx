@@ -56,7 +56,7 @@ export default async function CordonsPage() {
       <Header overlay />
       <main>
         <PageHead
-          label="Cordons"
+          label="Cordons · Stock baskets"
           title={<>One token, <em>one basket.</em></>}
           lead="Cordons are disciplined stock baskets. One token holds the whole basket, its value follows the stocks inside, and it is pruned on a schedule, so you do not have to."
           meta={<SessionMeta state={marketState(now)} next={nextLabel} demo={anyDemo} />}
@@ -104,7 +104,7 @@ export default async function CordonsPage() {
                   <li key={p.symbol} className="grid">
                     <Appear className="pcard plan" delay={i * 0.1}>
                       <div className="top">
-                        <div><div className="sym">{p.symbol}</div><div className="nm">{p.name}</div></div>
+                        <div><div className="sym">{p.symbol}</div><div className="nm">Cordon · Stock basket</div><div className="nm">{p.name}</div></div>
                         <Tag>After MVP</Tag>
                       </div>
                       <ul className="tickers" aria-label="Planned components">{p.chips.map((c) => <li key={c}>{c}</li>)}</ul>

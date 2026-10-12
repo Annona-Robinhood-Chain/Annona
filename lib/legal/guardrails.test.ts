@@ -16,9 +16,12 @@ const copyFiles = [
 const linkFiles = [...copyFiles, "components/layout-parts.tsx"];
 const read = (f: string) => readFileSync(join(root, f), "utf8");
 
+// Frasa yang sengaja diizinkan (disetujui pemilik produk): penyangkalan \"not guaranteed\" di catatan risiko hero.
+// Kata \"guaranteed\" tanpa \"not\" di depannya tetap terlarang.
+const stripAllowed = (s: string) => s.replace(/\bnot\s+guaranteed\b/gi, "");
 test("guardrail penamaan: tanpa kata terlarang", () => {
   const banned = /\b(ETF|funds?|index fund|guarantee[ds]?|risk-free|savings?|interest)\b/i;
-  for (const f of copyFiles) assert.doesNotMatch(read(f), banned, `${f} memuat kata terlarang`);
+  for (const f of copyFiles) assert.doesNotMatch(stripAllowed(read(f)), banned, `${f} memuat kata terlarang`);
 });
 
 // Daftar `copyFiles` dipilih manual, sehingga copy baru di file lain lolos (kata "Funds" di trade-panels.tsx
@@ -32,12 +35,14 @@ test("guardrail penamaan: seluruh file UI (app/ dan components/) bebas kata terl
       .map((f) => join(dir, f)),
   );
   assert.ok(files.length > 40, `pemindaian harus mencakup banyak file (dapat ${files.length})`);
-  for (const f of files) assert.doesNotMatch(read(f), banned, `${f} memuat kata terlarang`);
+  for (const f of files) assert.doesNotMatch(stripAllowed(read(f)), banned, `${f} memuat kata terlarang`);
 });
 
 test("guardrail brand: tanpa nama penerbit Stock Token atau USDG", () => {
   const issuers = /(robinhood|paxos|bbvi|jersey|\bRHJ\b)/i;
-  for (const f of copyFiles) assert.doesNotMatch(read(f), issuers, `${f} menyebut nama penerbit`);
+  // \"Robinhood Chain\" (nama jaringan) diizinkan di copy; nama \"Robinhood\" lain (mis. sebagai penerbit token) tetap terlarang.
+  const stripChain = (s: string) => s.replace(/Robinhood Chain/gi, "");
+  for (const f of copyFiles) assert.doesNotMatch(stripChain(read(f)), issuers, `${f} menyebut nama penerbit`);
 });
 
 test("semua tautan internal menuju halaman yang ada", () => {
