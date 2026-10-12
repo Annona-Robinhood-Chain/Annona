@@ -8,6 +8,7 @@ import { LinkTabs } from "@/components/tabs";
 import { ButtonLink } from "@/components/ui";
 import { VaultListRisk } from "@/components/vault-parts";
 import { ConfigError } from "@/lib/api/http";
+import { tokenCopy } from "@/lib/token-copy";
 import { marketState, nextChange } from "@/lib/api/market";
 import { listVaults } from "@/lib/api/queries";
 import { graftLive, spurLive, web3Env } from "@/lib/web3/env";
@@ -137,6 +138,7 @@ export default async function VaultsPage({ searchParams }: Props) {
                         <div><div className="sym">{plannedGraft.symbol}</div><div className="nm">{plannedGraft.text}</div></div>
                         <Tag>Not live</Tag>
                       </div>
+                      {tokenCopy(plannedGraft.symbol) && <p className="blurb">{tokenCopy(plannedGraft.symbol)}</p>}
                       <Ill kind="granary" className="vault-ill dimmed" />
                       <div className="row"><span className="k">Collateral</span><span>USDG</span></div>
                       <div className="row"><span className="k">Strike</span><span>Below today’s price</span></div>

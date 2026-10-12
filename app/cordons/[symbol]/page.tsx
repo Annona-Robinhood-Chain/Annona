@@ -17,6 +17,7 @@ import { getCordonPage, getNav, getPrunings } from "@/lib/api/queries";
 import { RANGES, parseRange } from "@/lib/api/range";
 import { cordonTopics } from "@/lib/realtime/live";
 import { usd } from "@/lib/format";
+import { tokenCopy } from "@/lib/token-copy";
 
 // NAV dan sesi pasar berubah: jangan dibekukan saat build.
 export const dynamic = "force-dynamic";
@@ -75,7 +76,7 @@ export default async function CordonDetailPage({ params, searchParams }: Props) 
           crumb={<><Link href="/cordons">Cordons</Link><span>/</span><span aria-current="page">{symbol}</span></>}
           label={ok ? `Cordon · Stock basket · ${data.cordon.name}` : "Cordon · Stock basket"}
           title={symbol}
-          lead={ok ? `${data.cordon.name}. One token holds the whole basket, and its value follows the stocks inside.` : undefined}
+          lead={ok ? tokenCopy(symbol) ?? `${data.cordon.name}. One token holds the whole basket, and its value follows the stocks inside.` : undefined}
           meta={ok ? (
             <>
               <HeadNav cordon={data.cordon} nav={data.nav} />

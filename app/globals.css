@@ -862,3 +862,7 @@ body.menu-open #menu nav a { opacity: 1; transform: none; }
 /* Fokus input: kotak .field / .input sudah memberi tanda fokus sendiri (border oranye). Aturan global :focus-visible (di luar layer)
    mengalahkan `outline: none` di dalam @layer components, sehingga muncul border kedua di dalam kotak. Ditiadakan di sini. */
 .field input:focus-visible, .field input:focus, .input:focus-visible { outline: none; }
+/* Deskripsi token di kartu (poin 4 update copy). */
+@layer components {
+  .pcard .blurb { margin: 12px 0 0; font-size: 14px; line-height: 1.55; color: var(--fg-2); max-width: 34em; }
+}

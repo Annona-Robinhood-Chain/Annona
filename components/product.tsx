@@ -1,4 +1,5 @@
 import { pct, usd } from "@/lib/format";
+import { tokenCopy } from "@/lib/token-copy";
 import { Delta } from "./data";
 import { Appear, ChartEmpty, Tag, TiltCard } from "./primitives";
 import { Ill } from "./sheaf-art";
@@ -18,6 +19,7 @@ export function CordonCard({ symbol, name, nav, change, assets, tvlUsd, composit
         <div><div className="sym">{symbol}</div><div className="nm">Cordon · Stock basket</div><div className="nm">{name}</div></div>
         <div className="tags"><Tag sun>{assets} assets</Tag>{isDemo && <Tag>demo</Tag>}</div>
       </div>
+      {tokenCopy(symbol) && <p className="blurb">{tokenCopy(symbol)}</p>}
       {composition && composition.length > 0
         ? <ul className="tickers" aria-label="Components">{composition.map((c) => <li key={c.label}>{c.label}</li>)}</ul>
         : <div className="tickers" aria-hidden="true" />}
@@ -49,6 +51,7 @@ export function VaultCard({ symbol, kind, underlying, apy, strike, round, isDemo
         <div><div className="sym">{symbol}</div><div className="nm">{type}{underlying && ` on ${underlying}`}</div></div>
         <div className="tags"><Tag sun>{spur ? underlying ?? "Stock" : "USDG"} in</Tag>{isDemo && <Tag>demo</Tag>}</div>
       </div>
+      {tokenCopy(symbol) && <p className="blurb">{tokenCopy(symbol)}</p>}
       <Ill kind={spur ? "sickle" : "granary"} className="vault-ill" />
       <div className="row"><span className="k">Strike this week</span><span className="num">{strike === null ? dash("no open round") : usd(strike)}</span></div>
       <div className="row">

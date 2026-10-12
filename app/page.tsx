@@ -27,6 +27,7 @@ import { ConfigError } from '@/lib/api/http';
 import type { HomeData } from '@/lib/api/home-derive';
 import { getHomeData } from '@/lib/api/queries';
 import { pct, usd } from '@/lib/format';
+import { TOKEN_COPY } from '@/lib/token-copy';
 import { web3Env } from '@/lib/web3/env';
 
 // Angka di halaman ini dibaca dari data nyata dan berubah tiap round: jangan dibekukan saat build.
@@ -71,7 +72,7 @@ const products: {
     kind: 'Stock basket',
     href: '/cordons',
     cta: 'Explore Cordons',
-    text: 'One token, one basket. cMAG7 holds seven large companies at equal weight, pruned on schedule. You keep the basket’s ups and its downs.',
+    text: TOKEN_COPY.cMAG7,
   },
   {
     glyph: 'sickle',
@@ -80,7 +81,7 @@ const products: {
     kind: 'Covered call',
     href: '/vaults?kind=spur',
     cta: 'Explore Spurs',
-    text: 'Deposit a Stock Token. Pickers pay premium up front for the upside above a strike. You collect it each round.',
+    text: TOKEN_COPY.sNVDA,
     trade: 'Spurs cap your upside. That is the trade.',
   },
   {
@@ -90,7 +91,7 @@ const products: {
     kind: 'Cash-secured put',
     href: '/vaults?kind=graft',
     cta: 'Explore Grafts',
-    text: 'Deposit USDG. Get paid premium while you wait to buy lower. If the price ends below the strike, the vault pays out the shortfall.',
+    text: TOKEN_COPY.gNVDA,
   },
 ];
 

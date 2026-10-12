@@ -18,6 +18,7 @@ import { getVault } from "@/lib/api/queries";
 import { graftLive, spurLive } from "@/lib/web3/env";
 import { vaultTopics } from "@/lib/realtime/live";
 import { pct, usd } from "@/lib/format";
+import { tokenCopy } from "@/lib/token-copy";
 
 // Round, strike, dan APY berubah tiap minggu: jangan dibekukan saat build.
 export const dynamic = "force-dynamic";
@@ -111,7 +112,7 @@ export default async function VaultDetailPage({ params }: Props) {
           crumb={<><Link href="/vaults">Spurs &amp; Grafts</Link><span>/</span><span aria-current="page">{symbol}</span></>}
           label={vault ? (spur ? "Spur · Covered call" : "Graft · Cash-secured put") : "Vault"}
           title={symbol}
-          lead={vault ? `${spur ? "Spur Vault. Covered call" : "Graft Vault. Cash-secured put"} on ${vault.underlying}. A Picker pays premium up front each round.` : undefined}
+          lead={vault ? tokenCopy(symbol) ?? `${spur ? "Spur Vault. Covered call" : "Graft Vault. Cash-secured put"} on ${vault.underlying}. A Picker pays premium up front each round.` : undefined}
           meta={vault ? (
             <>
               <span className="big-num">

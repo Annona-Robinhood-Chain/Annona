@@ -5,6 +5,7 @@ import { CordonCard } from "@/components/product";
 import { Appear, Empty, PageHead, SplitTitle, Tag } from "@/components/primitives";
 import { ButtonLink } from "@/components/ui";
 import { ConfigError } from "@/lib/api/http";
+import { tokenCopy } from "@/lib/token-copy";
 import { marketState, nextChange } from "@/lib/api/market";
 import { getNav, listCordons } from "@/lib/api/queries";
 
@@ -107,6 +108,7 @@ export default async function CordonsPage() {
                         <div><div className="sym">{p.symbol}</div><div className="nm">Cordon · Stock basket</div><div className="nm">{p.name}</div></div>
                         <Tag>After MVP</Tag>
                       </div>
+                      {tokenCopy(p.symbol) && <p className="blurb">{tokenCopy(p.symbol)}</p>}
                       <ul className="tickers" aria-label="Planned components">{p.chips.map((c) => <li key={c}>{c}</li>)}</ul>
                       <div className="row"><span className="k">Status</span><span>Not planted yet</span></div>
                       <div className="row"><span className="k">Weighting</span><span>{p.weighting}</span></div>
